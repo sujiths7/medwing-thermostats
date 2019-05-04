@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_063742) do
+ActiveRecord::Schema.define(version: 2019_05_04_072241) do
+
+  create_table "readings", force: :cascade do |t|
+    t.integer "thermostat_id"
+    t.integer "number", null: false
+    t.float "temperature", null: false
+    t.float "humidity", null: false
+    t.float "battery_charge", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thermostat_id"], name: "index_readings_on_thermostat_id"
+    t.index ["thermostat_id"], name: "index_thermostats_on_thermostat_id"
+  end
 
   create_table "thermostats", force: :cascade do |t|
     t.string "household_token", null: false
